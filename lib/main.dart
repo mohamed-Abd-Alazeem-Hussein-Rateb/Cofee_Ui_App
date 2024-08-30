@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/Onboarding.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter_application_1/screens/detail_screen.dart';
 import 'package:flutter_application_1/screens/home_screen.dart';
 
 void main() => runApp(

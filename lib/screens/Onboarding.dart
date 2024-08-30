@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/detail_screen.dart';
-import 'package:flutter_application_1/screens/home_screen.dart';
 import 'package:flutter_application_1/widgets/constant.dart';
 
 class OnboardingScreen extends StatelessWidget {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/body_banner.dart';
 import 'package:flutter_application_1/widgets/body_header.dart';
 import 'package:flutter_application_1/widgets/body_search.dart';
+import 'package:flutter_application_1/widgets/categories_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                   Color(0xff111111),
                 ], begin: Alignment.bottomLeft, end: Alignment.topRight)),
               ),
-            const  Padding(
+              Padding(
                 padding:  EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,18 +36,61 @@ class HomeScreen extends StatelessWidget {
                       style:
                           TextStyle(color: Color.fromARGB(255, 212, 211, 211)),
                     ),
-                     SizedBox(
+                   const  SizedBox(
                       height: 3,
                     ),
-                    BodyHeader(),
-                     SizedBox(
+                   const BodyHeader(),
+                    const SizedBox(
                       height: 12,
                     ),
-                    BodySearch(),
-                    SizedBox(height: 13,),
-                   BodyBanner(),
-                   SizedBox(height: 11,),
-                   
+                   const BodySearch(),
+                   const SizedBox(height: 13,),
+                  const BodyBanner(),
+                 const  SizedBox(height: 11,),
+                   CategoriesItem(),
+                   Container(
+                    height: 238,
+                    width: 156,
+                    decoration: BoxDecoration(
+                     
+                    ),
+                    child: Card(
+                      child: Column(
+                        children:  [
+                          SizedBox(height: 10,),
+                         ClipRRect(
+                           borderRadius: BorderRadius.circular(16),
+                           child: Image.asset('assets/Irish Coffee.jpg',
+                           fit: BoxFit.fill,
+                           height: 128,
+                           width: 140,
+                           ),
+                         ),
+                         const SizedBox(height: 10,),
+                          Row(
+                            children: [
+                              SizedBox(width: 8,),
+                              Text('Irish Coffee',style: TextStyle(fontWeight: FontWeight.bold),),
+                            ],
+                          ),
+                          SizedBox(height: 5,),
+                          Row(
+                            children: [
+                              SizedBox(width: 5,),
+                              Text('Deep foam',style: TextStyle(color: Colors.grey),),
+                            ],
+                          ),
+                          SizedBox(height: 5,),
+                          Row(
+                            children: [
+                              SizedBox(width: 4,),
+                              Text('\$5.00',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                   )
                   ],
                 ),
               )
