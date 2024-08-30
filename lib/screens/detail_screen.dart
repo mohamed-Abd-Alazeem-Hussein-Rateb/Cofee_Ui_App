@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/coffee_modle.dart';
 import 'package:flutter_application_1/widgets/constant.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
-
+  const DetailScreen({super.key, required this.coffe});
+  final CoffeeModle coffe;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 13.0, vertical: 25),
+        padding:  EdgeInsets.symmetric(horizontal: 13.0, vertical: 25),
         child: Column(
           children: [
             Row(
@@ -27,18 +28,18 @@ class DetailScreen extends StatelessWidget {
             SizedBox(height: 20,),
             ClipRRect(
               borderRadius:const BorderRadius.all(Radius.circular(20)),
-              child: Image.asset('assets/Americano-coffee.jpg',
+              child: Image.asset(coffe.Image,
               height: 200,
               width: double.infinity,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
               )),
               SizedBox(height: 15,),
-             const Row(
+              Row(
                 children: [
-                  Text('Americano', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  Text(coffe.name, style:const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                 ],
               ),
-              SizedBox(height: 3,),
+             const SizedBox(height: 3,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -60,7 +61,7 @@ class DetailScreen extends StatelessWidget {
                 children: [
                   Image.asset('assets/Rating.png'),
                   SizedBox(width: 4,),
-                  Text('4.5', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                  Text(coffe.rating.toString(), style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
                   SizedBox(width: 5,),
                   Text('(1000+)', style: TextStyle(color: Colors.grey),),
                 ],
@@ -87,7 +88,10 @@ class DetailScreen extends StatelessWidget {
                 ],
               ),
              const SizedBox(height: 15,),
-              const Text('Caffè Americano is a coffee-based drink prepared by diluting an espresso with hot water, giving it ...', style: TextStyle(fontSize: 15),),
+               Text(coffe.description, 
+               maxLines: 3,
+               overflow: TextOverflow.ellipsis,
+               style: TextStyle(fontSize: 15),),
               SizedBox(height: 5,),
               const Text('Read More', style: TextStyle(color: kprimaryColor),),
               SizedBox(height: 5,),
@@ -140,14 +144,14 @@ class DetailScreen extends StatelessWidget {
               SizedBox(height: 30,),
               Row(
                 children: [
-               const  Column(
+                 Column(
                   children: [
-                     Text('Price', style: TextStyle(fontSize: 20,),),
-                  SizedBox(width: 5,),
-                  Text('₹ 120', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: kprimaryColor ),),
+                    const Text('Price', style: TextStyle(fontSize: 20,),),
+                const  SizedBox(width: 5,),
+                  Text('₹${coffe.price.toString()}', style:const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: kprimaryColor ),),
                   ],
                  ),
-                  SizedBox(width: 65,),
+                const  SizedBox(width: 65,),
                   Container(
                     height:60,
                     width: 205,

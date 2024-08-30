@@ -17,7 +17,7 @@ class CoffeeModle {
     required this.price,
   });
 
-  final ListgridleCoffee = [
+  static List<CoffeeModle> coffees = [
   CoffeeModle(
     name: 'Cappuccino',
     Image: 'assets/coffee-drink- Cappuccino.jpg',
