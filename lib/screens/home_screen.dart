@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/coffee_modle.dart';
-import 'package:flutter_application_1/screens/detail_screen.dart';
+import 'package:flutter_application_1/widgets/Gridview_item.dart';
 import 'package:flutter_application_1/widgets/body_banner.dart';
 import 'package:flutter_application_1/widgets/body_header.dart';
 import 'package:flutter_application_1/widgets/body_search.dart';
 import 'package:flutter_application_1/widgets/categories_item.dart';
-import 'package:flutter_application_1/widgets/product_item.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+  
     return SafeArea(
       child: Scaffold(
         body: ListView(
@@ -53,28 +51,7 @@ class HomeScreen extends StatelessWidget {
                       CategoriesItem(),
                       const SizedBox(height: 11),
                       // تم إزالة Expanded من هنا
-                      GridView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          childAspectRatio: 0.7,
-                        ),
-                        itemCount: CoffeeModle.coffees.length,
-                        itemBuilder: (context, index) {
-                        var coffee = CoffeeModle.coffees[index];
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(coffe: coffee,)));
-                            },
-                            child: ProductItem(
-                              coffee:coffee ,
-                            ),
-                          );
-                        },
-                      ),
+                    const GridviewItem(),
                     ],
                   ),
                 )

@@ -7,15 +7,17 @@ part 'coffee_state.dart';
 
 class CoffeeCubit extends Cubit<CoffeeState> {
   CoffeeCubit(this.coffeeServices) : super(CoffeeInitial());
-   final CoffeeServices coffeeServices;
+  final CoffeeServices coffeeServices;
   List<CoffeeModle> coffees = [];
-  getAllCoffees() async {
+
+  Future<void> getAllCoffees() async {
     emit(CoffeeLoading());
     try {
-      coffees = await CoffeeServices().getAllCoffees();
+      coffees = await coffeeServices.getAllCoffees(); // استخدام coffeeServices هنا
       emit(CoffeeLoaded(coffees));
     } catch (e) {
       emit(CoffeeError(e.toString()));
     }
   }
 }
+

@@ -28,7 +28,7 @@ class DetailScreen extends StatelessWidget {
             SizedBox(height: 20,),
             ClipRRect(
               borderRadius:const BorderRadius.all(Radius.circular(20)),
-              child: Image.asset(coffe.Image,
+              child: Image.network(coffe.image,
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -43,7 +43,7 @@ class DetailScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Lce/Hot', style: TextStyle(fontSize: 20, color: Colors.grey),),
+                  Text(coffe.type, style: TextStyle(fontSize: 20, color: Colors.grey),),
                  Row(
                   children: [
                      Image.asset('assets/bike.png'),
@@ -61,7 +61,7 @@ class DetailScreen extends StatelessWidget {
                 children: [
                   Image.asset('assets/Rating.png'),
                   SizedBox(width: 4,),
-                  Text(coffe.rating.toString(), style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                  Text('4.5', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
                   SizedBox(width: 5,),
                   Text('(1000+)', style: TextStyle(color: Colors.grey),),
                 ],
@@ -144,11 +144,11 @@ class DetailScreen extends StatelessWidget {
               SizedBox(height: 30,),
               Row(
                 children: [
-                 Column(
+                const Column(
                   children: [
-                    const Text('Price', style: TextStyle(fontSize: 20,),),
-                const  SizedBox(width: 5,),
-                  Text('₹${coffe.price.toString()}', style:const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: kprimaryColor ),),
+                     Text('Price', style: TextStyle(fontSize: 20,),),
+                  SizedBox(width: 5,),
+                  Text('\$20', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: kprimaryColor ),),
                   ],
                  ),
                 const  SizedBox(width: 65,),

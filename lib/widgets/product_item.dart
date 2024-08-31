@@ -20,9 +20,9 @@ class ProductItem extends StatelessWidget {
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                coffee.Image,
-                fit: BoxFit.fill,
+              child: Image.network(
+                coffee.image,
+                fit: BoxFit.cover,
                 height: 128,
                 width: 140,
               ),
@@ -63,8 +63,8 @@ class ProductItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    '\$${coffee.price.toStringAsFixed(2)}',
+                 const Text(
+                    '\$20',
                     style: const TextStyle(
                         fontSize: 22, fontWeight: FontWeight.bold),
                   ),

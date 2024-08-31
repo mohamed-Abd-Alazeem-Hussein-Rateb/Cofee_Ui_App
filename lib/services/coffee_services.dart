@@ -14,7 +14,6 @@ Future<List<CoffeeModle>> getAllCoffees() async {
       for (var item in data) {
         coffees.add(CoffeeModle.fromJson(item));
       }
-       print('coffees ***** $coffees');
       return coffees;
     } else {
       throw Exception('Failed to load coffees');
