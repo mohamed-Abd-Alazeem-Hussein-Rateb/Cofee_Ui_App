@@ -20,14 +20,8 @@ class CoffeeCubit extends Cubit<CoffeeState> {
     }
   }
 
- Set<String> favoriteIds = {};
-    void toggleFavorite(String coffeeId) {
-    if (favoriteIds.contains(coffeeId)) {
-      favoriteIds.remove(coffeeId);
-    } else {
-      favoriteIds.add(coffeeId);
-    }
-    emit(CoffeeLoaded(coffees));
-  }
+
+
+ 
 }
 

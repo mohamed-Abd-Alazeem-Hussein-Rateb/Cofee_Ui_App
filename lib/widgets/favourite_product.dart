@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/cubites/cubit/coffee_cubit.dart';
 import 'package:flutter_application_1/models/coffee_modle.dart';
 import 'package:flutter_application_1/widgets/constant.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class FavouriteProduct extends StatelessWidget {
   const FavouriteProduct({super.key, required this.coffee});
@@ -42,7 +41,7 @@ final CoffeeModle coffee;
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           IconButton(onPressed: () {
-                            context.read<CoffeeCubit>().toggleFavorite(coffee.name);
+                         
                           }, icon: const Icon(Icons.delete,
                             color: Colors.red,
                           )),

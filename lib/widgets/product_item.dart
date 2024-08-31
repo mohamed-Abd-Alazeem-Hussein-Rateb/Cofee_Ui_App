@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/cubites/cubit/coffee_cubit.dart';
 import 'package:flutter_application_1/models/coffee_modle.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_application_1/widgets/botton_favourite.dart';
+
 
 class ProductItem extends StatelessWidget {
   final CoffeeModle coffee;
@@ -10,10 +10,6 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isFavorite = context.select<CoffeeCubit, bool>(
-      (cubit) => cubit.favoriteIds.contains(coffee.name), // استخدام الاسم كـ ID
-    );
-
     return Container(
       height: 295,
       width: 156,
@@ -21,16 +17,20 @@ class ProductItem extends StatelessWidget {
       child: Card(
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: InkWell(
-                onTap: () {
-                  context.read<CoffeeCubit>().toggleFavorite(coffee.name);
-                },
-                child: Icon(
-                  isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: isFavorite ? Colors.red : Colors.grey,
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Align(
+                 alignment: Alignment.topLeft,
+                 child: Icon(
+                  Icons.shopping_cart_outlined,
+                  color:  Colors.grey,
+                 ),
+               ),
+              BottonFavourite(coffee: coffee),
+                ],
               ),
             ),
             const SizedBox(height: 1),
