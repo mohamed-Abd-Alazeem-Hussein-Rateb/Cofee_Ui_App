@@ -14,4 +14,14 @@ class FavouriteCubit extends Cubit<FavouriteState> {
     coffeemodles.add(coffeemodle);
     emit(FavouriteSucess(coffeemodles: coffeemodles));
   }
+
+
+   removeFavourite(CoffeeModle coffeemodle) {
+    coffeemodles.remove(coffeemodle);
+    if (coffeemodles.isEmpty) {
+      emit(FavouriteEmpty());
+    } else {
+      emit(FavouriteSucess(coffeemodles: coffeemodles));
+    }
+  }
 }
