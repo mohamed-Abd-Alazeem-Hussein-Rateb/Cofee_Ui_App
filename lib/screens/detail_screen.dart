@@ -30,7 +30,7 @@ class DetailScreen extends StatelessWidget {
               borderRadius:const BorderRadius.all(Radius.circular(20)),
               child: Image.network(coffe.image,
               height: 200,
-              width: double.infinity,
+              width: 320,
               fit: BoxFit.cover,
               )),
               SizedBox(height: 15,),

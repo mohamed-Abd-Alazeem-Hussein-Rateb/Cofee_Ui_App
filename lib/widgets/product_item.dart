@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/cubites/cubit/coffee_cubit.dart';
 import 'package:flutter_application_1/models/coffee_modle.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductItem extends StatelessWidget {
   final CoffeeModle coffee;
@@ -8,16 +10,30 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isFavorite = context.select<CoffeeCubit, bool>(
+      (cubit) => cubit.favoriteIds.contains(coffee.name), // استخدام الاسم كـ ID
+    );
+
     return Container(
-      height: 238,
+      height: 295,
       width: 156,
       decoration: const BoxDecoration(),
       child: Card(
         child: Column(
           children: [
-            const SizedBox(
-              height: 5,
+            Align(
+              alignment: Alignment.topRight,
+              child: InkWell(
+                onTap: () {
+                  context.read<CoffeeCubit>().toggleFavorite(coffee.name);
+                },
+                child: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: isFavorite ? Colors.red : Colors.grey,
+                ),
+              ),
             ),
+            const SizedBox(height: 1),
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.network(
@@ -27,36 +43,25 @@ class ProductItem extends StatelessWidget {
                 width: 140,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 5),
             Row(
               children: [
-                const SizedBox(
-                  width: 8,
-                ),
+                const SizedBox(width: 8),
                 Text(
                   coffee.name,
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 4,
-            ),
+            const SizedBox(height: 1),
             Row(
               children: [
-                const SizedBox(
-                  width: 5,
-                ),
+                const SizedBox(width: 5),
                 Text(
                   coffee.type,
                   style: const TextStyle(color: Colors.grey),
                 ),
               ],
-            ),
-            const SizedBox(
-              height: 2,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -64,11 +69,10 @@ class ProductItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                  const Text(
-                    '\$20',
-                    style: const TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.bold),
+                    '\$25', // عرض السعر بشكل صحيح
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  Image.asset('assets/Icon.png'),
+                  Image.asset('assets/Icon.png', height: 20, width: 20, fit: BoxFit.cover),
                 ],
               ),
             ),
@@ -78,3 +82,4 @@ class ProductItem extends StatelessWidget {
     );
   }
 }
+

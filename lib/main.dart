@@ -7,24 +7,28 @@ import 'package:flutter_application_1/services/coffee_services.dart';
 import 'package:flutter_application_1/widgets/bloc_observer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() { 
+void main() {
   Bloc.observer = SimpleBlocObserver();
   runApp(
-      DevicePreview(
-        enabled: !kReleaseMode,
-        builder: (context) => CoffeApp(), // Wrap your app
-      ),
-    );
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => CoffeApp(), // Wrap your app
+    ),
+  );
 }
+
 class CoffeApp extends StatelessWidget {
   const CoffeApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      home: const OnboardingScreen(),
+    return BlocProvider(
+      create: (context) => CoffeeCubit(CoffeeServices()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        home: const OnboardingScreen(),
+      ),
     );
   }
 }

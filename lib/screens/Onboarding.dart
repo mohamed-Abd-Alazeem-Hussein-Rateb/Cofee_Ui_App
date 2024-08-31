@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/home_screen.dart';
+import 'package:flutter_application_1/screens/dashboard_screen.dart';
 import 'package:flutter_application_1/widgets/constant.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -63,7 +63,7 @@ class OnboardingScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const HomeScreen();
+                  return const DashboardScreen();
                 }));
               },
               child: Container(
