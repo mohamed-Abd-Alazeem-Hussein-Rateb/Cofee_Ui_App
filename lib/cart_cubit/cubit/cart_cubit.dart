@@ -9,7 +9,7 @@ class CartCubit extends Cubit<CartState> {
      List<CoffeeModle> coffeemodles = [];
 
   // دالة تبديل حالة المفضلة
-void toggleFavourite(CoffeeModle coffeemodle) {
+void toggleCart(CoffeeModle coffeemodle) {
     if (coffeemodles.contains(coffeemodle)) {
       coffeemodles.remove(coffeemodle);
       coffeemodle.isFavorite = false;  // تحديث حالة isFavorite هنا

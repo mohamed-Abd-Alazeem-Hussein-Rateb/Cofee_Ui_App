@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/coffee_modle.dart';
+import 'package:flutter_application_1/widgets/botton_cart.dart';
 import 'package:flutter_application_1/widgets/botton_favourite.dart';
 
 
@@ -22,13 +23,7 @@ class ProductItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Align(
-                 alignment: Alignment.topLeft,
-                 child: Icon(
-                  Icons.shopping_cart_outlined,
-                  color:  Colors.grey,
-                 ),
-               ),
+                  BottonCart(coffee: coffee),
               BottonFavourite(coffee: coffee),
                 ],
               ),
