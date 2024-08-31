@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/coffee_modle.dart';
+import 'package:flutter_application_1/widgets/botton_favourite.dart';
 import 'package:flutter_application_1/widgets/constant.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -22,7 +23,7 @@ class DetailScreen extends StatelessWidget {
                   icon: const Icon(Icons.arrow_back_ios_new),
                 ),
                 const Text('Detail', style: TextStyle(fontSize: 20)),
-                Icon( Icons.favorite, color: Colors.grey[400],),
+               BottonFavourite(coffee: coffe,),
               ],
             ),
             SizedBox(height: 20,),

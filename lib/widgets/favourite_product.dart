@@ -51,7 +51,7 @@ class FavouriteProduct extends StatelessWidget {
                         var cubit = BlocProvider.of<FavouriteCubit>(context);
                         return IconButton(
                             onPressed: () {
-                             cubit.removeFavourite(coffee);
+                             cubit.toggleFavourite(coffee);
                             },
                             icon: const Icon(
                               Icons.delete,

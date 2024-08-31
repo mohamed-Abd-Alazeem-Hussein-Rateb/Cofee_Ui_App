@@ -5,29 +5,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BottonFavourite extends StatelessWidget {
   const BottonFavourite({super.key, required this.coffee});
- final CoffeeModle coffee;
+  final CoffeeModle coffee;
+
   @override
   Widget build(BuildContext context) {
-    var cubit = BlocProvider.of<FavouriteCubit>(context);
     return BlocBuilder<FavouriteCubit, FavouriteState>(
       builder: (context, state) {
-        return  Align(
-                alignment: Alignment.topRight,
-                child: InkWell(
-                  onTap: () {
-                  cubit.addFavourite(coffee);
-                  coffee.isFavorite = true;
-                  },
-                  child: Icon(
-                     coffee.isFavorite
-                  ? Icons.favorite_outlined
-                  : Icons.favorite_outline_sharp,
+        // نتأكد أن الحاله محدثة بشكل صحيح
+        bool isFavorite = coffee.isFavorite;
+
+        return Align(
+          alignment: Alignment.topRight,
+          child: InkWell(
+            onTap: () {
+              // نحدث الحاله هنا
+              BlocProvider.of<FavouriteCubit>(context).toggleFavourite(coffee);
+            },
+            child: Icon(
+              isFavorite ? Icons.favorite_outlined : Icons.favorite_outline_sharp,
               size: 20,
-              color: coffee.isFavorite ? Colors.red : Colors.black,
-                  ),
-                ),
-              );
-      }
-      );
+              color: isFavorite ? Colors.red : Colors.black,
+            ),
+          ),
+        );
+      },
+    );
   }
 }
