@@ -13,7 +13,8 @@ class CartScreen extends StatelessWidget {
    
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        leading: null,
+        title: Text('Cart'),
       ),
       body: BlocBuilder<CartCubit, CartState>(
         builder: (context, state) {

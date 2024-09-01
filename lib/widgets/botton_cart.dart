@@ -6,25 +6,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class BottonCart extends StatelessWidget {
   const BottonCart({super.key, required this.coffee});
   final CoffeeModle coffee;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
-         bool isFavorite = coffee.isFavorite;
-  var cubit = BlocProvider.of<CartCubit>(context);
-        return  Align(
-                 alignment: Alignment.topLeft,
-                 child: InkWell(
-                  onTap: () {
-                    cubit.toggleCart(coffee);
-                  },
-                   child: Icon(
-                  isFavorite ? Icons.shopping_cart :  Icons.shopping_cart_outlined,
-                    color: isFavorite ? Colors.red : Colors.black,
-                   ),
-                 ),
-               );
-      }
-      );
+        var cartCubit = BlocProvider.of<CartCubit>(context);
+        bool isInCart = cartCubit.coffeemodles.contains(coffee);
+
+        return Align(
+          alignment: Alignment.topLeft,
+          child: InkWell(
+            onTap: () {
+              BlocProvider.of<CartCubit>(context).toggleCart(coffee);
+            },
+            child: Icon(
+              isInCart ? Icons.shopping_cart : Icons.shopping_cart_outlined,
+              color: isInCart ? Colors.red : Colors.black,
+            ),
+          ),
+        );
+      },
+    );
   }
 }
+

@@ -62,7 +62,7 @@ class OnboardingScreen extends StatelessWidget {
             const SizedBox(height: 23),
             InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
                   return const DashboardScreen();
                 }));
               },

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/cart_cubit/cubit/cart_cubit.dart';
 import 'package:flutter_application_1/models/coffee_modle.dart';
@@ -18,15 +19,19 @@ class CartProduct extends StatelessWidget {
             width: double.infinity,
             child: Card(
               child: Row(children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.network(
-                    coffee.image,
-                    fit: BoxFit.cover,
-                    height: 128,
-                    width: 140,
-                  ),
-                ),
+               ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: CachedNetworkImage(
+                imageUrl: coffee.image,
+                fit: BoxFit.cover,
+                height: 128,
+                width: 140,
+                placeholder: (context, url) => const Center(child: SizedBox(height: 20, width: 20, child: CircularProgressIndicator(
+                  color: Colors.brown,
+                ))),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
+            ),
                 const SizedBox(width: 30),
                 Column(
                   children: [

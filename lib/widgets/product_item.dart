@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/coffee_modle.dart';
 import 'package:flutter_application_1/widgets/botton_cart.dart';
@@ -29,13 +30,17 @@ class ProductItem extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 1),
-            ClipRRect(
+             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.network(
-                coffee.image,
+              child: CachedNetworkImage(
+                imageUrl: coffee.image,
                 fit: BoxFit.cover,
                 height: 128,
                 width: 140,
+                placeholder: (context, url) => const Center(child: SizedBox(height: 20, width: 20, child: CircularProgressIndicator(
+                  color: Colors.brown,
+                ))),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
             const SizedBox(height: 5),
